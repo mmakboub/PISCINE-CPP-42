@@ -1,0 +1,70 @@
+La déclaration contact(std::string firstName, std::string lastName, std::string nickname, std::string phoneNumber, std::string darkestSecret) définit un constructeur pour une classe contact qui prend cinq arguments de type std::string.
+
+Les arguments correspondent aux données d'un contact, telles que le prénom, le nom de famille, le surnom, le numéro de téléphone et le plus grand secret du contact. Les valeurs de ces arguments seront utilisées pour initialiser les membres de l'objet contact créé.
+
+
+pourquoi on a fait std::string et n'on pas string seulement ??
+
+L'utilisation de std::string plutôt que de string est due à la norme d'utilisation du namespace standard en C++. En C++, les types standard sont définis dans le namespace std.
+
+Lorsque vous utilisez un type standard sans spécifier de namespace, vous pouvez rencontrer des conflits de noms avec d'autres définitions de types. Pour éviter ces conflits, il est recommandé d'utiliser le nom complet avec le namespace std. Par conséquent, std::string est la forme correcte et la plus couramment utilisée pour déclarer un type string en C++.
+
+QU'EST CE QU'UN GETER ET SETER E C++ ?
+
+En C++, un getter est une méthode qui permet de récupérer la valeur d'un membre de données privé d'une classe. Un setter est une méthode qui permet de définir la valeur d'un membre de données privé d'une classe.
+
+Les getters et les setters sont souvent utilisés pour contrôler l'accès à des membres de données privées et garantir que les données restent cohérentes et valides. 
+En utilisant des getters et des setters au lieu d'accéder directement aux membres de données privées, vous pouvez ajouter des vérifications et des traitements supplémentaires avant de permettre à un client d'accéder ou de définir la valeur d'un membre de données.
+
+Voici un exemple d'utilisation de getters et de setters en C++ :
+
+class MyClass {
+ public:
+  int getValue() const { return value; }
+  void setValue(int newValue) { value = newValue; }
+
+ private:
+  int value;
+};
+
+Dans cet exemple, la valeur du membre de données privé value peut être récupérée à l'aide de la méthode getValue() et définie à l'aide de la méthode setValue(). 
+Les membres de données getValue et setValue sont déclarés en tant que public, ce qui signifie qu'ils peuvent être appelés depuis n'importe où. Cependant, le membre de données value est déclaré en tant que private, ce qui signifie qu'il ne peut être accédé directement que depuis l'intérieur de la classe.
+
+int getValue() const pourquoi on a mis const ?
+En C++, le mot clé const est utilisé pour indiquer que la méthode ne modifie pas les membres de données de la classe. Cela signifie que la méthode ne peut pas altérer l'état de l'objet, ce qui garantit la sécurité de l'objet.
+
+Lorsqu'une méthode est déclarée en tant que const, elle peut être appelée sur des objets qui sont déclarés en tant que const :
+MyClass myObj;
+const MyClass constObj;
+
+myObj.getValue();        // appel sur un objet non-const
+constObj.getValue();     // appel sur un objet const
+
+Déclarer une méthode en tant que const est une bonne pratique car cela permet de garantir que les objets const ne seront pas modifiés accidentellement par une méthode appelée sur ces objets. 
+De plus, cela peut également améliorer les performances en permettant une optimisation du compilateur, car les méthodes const peuvent être appelées plus rapidement.
+compilateur que votre méthode ne modifie pas l'objet, c'est-à-dire qu'elle ne modifie la valeur d'aucun de ses attributs.
+Par exemple :
+
+une méthode qui se contente d'afficher à l'écran des informations sur l'objet est une méthode constante : elle ne fait que lire les attributs ;
+
+en revanche, une méthode qui met à jour le niveau de vie d'un personnage ne peut pas être constante.
+
+
+Il est généralement recommandé d'utiliser la méthode fail() plutôt que empty() ou good() pour vérifier l'état de cin en C++.
+
+fail() est plus générique et indique une erreur lors de la lecture, qu'elle soit causée par un mauvais format de données ou un problème d'E/S, alors qu'empty() ne prend en compte que les cas où le buffer d'entrée est vide.
+
+De plus, après une erreur de lecture, il est souvent nécessaire d'effacer le drapeau d'erreur (avec clear()) et d'ignorer les données restantes dans le buffer d'entrée (avec ignore()) pour pouvoir continuer à lire les entrées ultérieures.
+
+AUTO EN C++??
+
+En C++, le mot clé auto est utilisé pour déclarer des variables en laissant au compilateur le soin de déterminer le type en fonction de la valeur affectée à la variable. Cela peut être utile pour améliorer la lisibilité du code et réduire la complexité en évitant de devoir écrire explicitement les types complexes.
+
+Par exemple, si vous voulez déclarer une variable pour stocker le résultat d'une expression, vous pouvez utiliser auto :
+
+java
+Copy code
+auto result = 3.14 * 2.0;
+Le compilateur déterminera que le type de result est double.
+
+Il est important de noter que l'utilisation de auto peut parfois entraîner une perte de performance en raison de la complexité supplémentaire requise pour déterminer le type. Il est donc préférable de l'utiliser avec parcimonie et de privilégier la déclaration explicite des types pour des performances optimales.

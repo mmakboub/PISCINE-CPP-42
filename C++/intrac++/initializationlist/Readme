@@ -1,0 +1,16 @@
+La syntaxe cinstanc::cinstanc(char p1, int p2, float p3) : a1(p1), a2(p2), a3(p3) définit un constructeur pour la classe cinstanc. 
+Les membres de l'objet cinstanc sont initialisés en utilisant les valeurs des arguments p1, p2 et p3.
+
+L'initialisation se fait en utilisant la liste d'initialisation, qui suit le nom du constructeur et est introduite par le signe :. 
+Cette liste d'initialisation permet d'assigner les valeurs des arguments aux membres de l'objet à créer. 
+Dans ce cas, la valeur de p1 est assignée à a1, la valeur de p2 à a2 et la valeur de p3 à a3.
+
+Il est possible d'utiliser une initialisation comme this->a1 = p1, mais la liste d'initialisation est généralement préférée pour plusieurs raisons :
+
+Clarté du code : La liste d'initialisation clarifie la correspondance entre les arguments du constructeur et les membres de l'objet. 
+Cela peut aider à prévenir les erreurs lors de la modification du code.
+Performance : L'utilisation de la liste d'initialisation peut améliorer les performances en permettant à la compile d'optimiser les opérations d'initialisation.
+
+Conventions de style : La liste d'initialisation est une convention courante dans la communauté C++ pour l'initialisation des membres de l'objet.
+
+En résumé, bien que l'initialisation this->a1 = p1 fonctionne, la liste d'initialisation est préférée pour sa clarté, sa performance et en raison des conventions de style en C++.

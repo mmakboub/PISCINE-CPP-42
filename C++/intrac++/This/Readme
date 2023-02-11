@@ -1,0 +1,21 @@
+"this" en C++ est un pointeur implicite qui pointe sur l'objet courant dans lequel la méthode est appelée. 
+Il peut être utilisé pour accéder aux attributs et aux méthodes de l'objet courant.
+
+Exemple:
+
+class Person {
+public:
+  string name;
+  int age;
+
+  void setName(string n) {
+    this->name = n;
+  }
+
+  void setAge(int a) {
+    this->age = a;
+  }
+};
+
+Dans cet exemple, "this->name" et "this->age" sont des références aux attributs name et age de l'objet courant.
+ Cela garantit que la méthode agit sur les attributs de l'objet correct, même si d'autres objets partagent les mêmes noms de variables.

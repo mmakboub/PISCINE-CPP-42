@@ -1,0 +1,22 @@
+
+
+Les attributs d'une classe en C++ représentent les variables d'instance de l'objet, tandis que les méthodes représentent les fonctions associées à l'objet qui agissent sur ces attributs. 
+Les attributs peuvent être déclarés en dehors ou à l'intérieur de la définition de la méthode, tandis que les méthodes sont généralement définies à l'extérieur de la classe.
+
+Exemple:
+
+class Person {
+public:
+  string name;
+  int age;
+
+  void setName(string n) {
+    name = n;
+  }
+
+  void setAge(int a) {
+    age = a;
+  }
+};
+
+Dans cet exemple, name et age sont des attributs de la classe Person, et setName et setAge sont des méthodes qui permettent de définir les valeurs des attributs.
