@@ -6,7 +6,7 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 01:12:20 by mmakboub          #+#    #+#             */
-/*   Updated: 2023/02/11 01:42:43 by mmakboub         ###   ########.fr       */
+/*   Updated: 2023/02/11 20:46:50 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class Weapon
         std::string _type;
     
     public:
-        Weapon();
+        Weapon(std::string &type);
         const std::string &getType(void)const;
         void setType(const std::string &newType);
         ~Weapon();
