@@ -6,7 +6,7 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 21:34:52 by mmakboub          #+#    #+#             */
-/*   Updated: 2023/02/11 22:16:47 by mmakboub         ###   ########.fr       */
+/*   Updated: 2023/02/12 15:38:31 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class HumanB{
     public:
     HumanB(std::string name);
     void attack(void);
-    void setWeapon(Weapon *weapon);
+    void setWeapon(Weapon &weapon);
     ~HumanB();
     
 };
