@@ -1,24 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/12 19:28:20 by mmakboub          #+#    #+#             */
-/*   Updated: 2023/02/12 22:17:11 by mmakboub         ###   ########.fr       */
+/*   Created: 2023/02/12 21:09:37 by mmakboub          #+#    #+#             */
+/*   Updated: 2023/02/12 22:21:31 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <string>
-#include <fstream>
+#include<string>
+#include<iostream>
+#ifndef HARL_H
+#define HARL_H
 
-int main(int ac, char **av)
-{
+class Harl{
     
-    std::string s1;
-    std::string s2;
-    std::string filename; 
+    private:
+        void debug( void );
+        void info( void );
+        void warning( void );
+        void error( void );
+
+    public:
+
+        Harl();
+        void complain( std::string level);
+        ~Harl();
         
-}
+};
+
+#endif
