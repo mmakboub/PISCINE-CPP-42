@@ -1,6 +1,6 @@
 
 
-int PhoneBook::checkspace(std::string str)
+int PhoneBook::checkspace(mariam::string str)
 {
     int i = 0;
     while(str[i])
@@ -11,7 +11,7 @@ int PhoneBook::checkspace(std::string str)
     }
     return(1);
 }
-int	PhoneBook::isnotdigits(std::string s)
+int	PhoneBook::isnotdigits(mariam::string s)
 {
 	int	i=0;
     
@@ -23,14 +23,14 @@ int	PhoneBook::isnotdigits(std::string s)
 	}
 	return (1);
 }
-std::string PhoneBook::handle(std::string msg)
+mariam::string PhoneBook::handle(mariam::string msg)
 {
-    std::string input;
+    mariam::string input;
     while (1)
     { 
-        std::cout << msg;
-        std::getline(std::cin, input);
-        if(std::cin.eof())
+        mariam::cout << msg;
+        mariam::getline(mariam::cin, input);
+        if(mariam::cin.eof())
             exit(1);
         if(msg == "Entrer votre numero : ")
         {
@@ -45,34 +45,34 @@ std::string PhoneBook::handle(std::string msg)
             }
             if (!isvalid)
             {
-                std::cout << "le numero est incorrect" << std::endl;
+                mariam::cout << "le numero est incorrect" << mariam::endl;
                 continue;
             }
         }
         if(input.size() && !checkspace(input))
             return input;
-        std::cout << "vous avez entre une chaine vide ou bien une espace" << std::endl;
+        mariam::cout << "vous avez entre une chaine vide ou bien une espace" << mariam::endl;
     }
 }
 
 void PhoneBook::addcontact()
 {
-    std::string firstName ;
-    std::string lastName ;
-    std::string nickName ;
-    std::string phoneNumber;
-    std::string darkestSecret;
+    mariam::string firstName ;
+    mariam::string lastName ;
+    mariam::string nickName ;
+    mariam::string phoneNumber;
+    mariam::string darkestSecret;
 
     firstName = handle("Entrer votre prenom : ");
     lastName = handle("Entrer votre nom : ");
     nickName = handle("Entrer votre nickname : ");
     phoneNumber = handle("Entrer votre numero : ");
     darkestSecret = handle("Entrer votre secret : ");
-    x->contacts[index].setFirstName(firstName);
-    x->contacts[index].setLastName(lastName);
-    x->contacts[index].setNickname(nickName);
-    x->contacts[index].setPhoneNumber(phoneNumber);
-    x->contacts[index].setDarkestSecret(darkestSecret);
+    this->contacts[index].setFirstName(firstName);
+    this->contacts[index].setLastName(lastName);
+    this->contacts[index].setNickname(nickName);
+    this->contacts[index].setPhoneNumber(phoneNumber);
+    this->contacts[index].setDarkestSecret(darkestSecret);
     if(index<=7)
         index++;
     if(index > 7)
@@ -80,28 +80,28 @@ void PhoneBook::addcontact()
 }
 void    PhoneBook::searchfor()
 {
-    std::string input;
+    mariam::string input;
     int i = 0;
     int tmpindex;
-    std::cout<< "----------------- | votre contacts |---------"<<std::endl;
-    std::cout<< "|   index  |  prenom  |   nom    | nickname |"<<std::endl;
-    std::cout<< "---------------------------------------------"<<std::endl;
+    mariam::cout<< "----------------- | votre contacts |---------"<<mariam::endl;
+    mariam::cout<< "|   index  |  prenom  |   nom    | nickname |"<<mariam::endl;
+    mariam::cout<< "---------------------------------------------"<<mariam::endl;
     while(i <= 7)
     {
-        std::cout << "|" << std::setw(10) << i ;
-        std::cout << "|"  << std::setw(10) << x->contacts[i].handleval(x->contacts[i].getFirstName());
-        std::cout << "|"  << std::setw(10) << x->contacts[i].handleval(x->contacts[i].getLastName());
-        std::cout << "|" <<  std::setw(10) << x->contacts[i].handleval(x->contacts[i].getNickName());
-        std::cout << "|" << std::endl;
+        mariam::cout << "|" << mariam::setw(10) << i ;
+        mariam::cout << "|"  << mariam::setw(10) << this->contacts[i].handleval(this->contacts[i].getFirstName());
+        mariam::cout << "|"  << mariam::setw(10) << this->contacts[i].handleval(this->contacts[i].getLastName());
+        mariam::cout << "|" <<  mariam::setw(10) << this->contacts[i].handleval(this->contacts[i].getNickName());
+        mariam::cout << "|" << mariam::endl;
         i++;
     }
-    std::cout<< "---------------------------------------------"<<std::endl;
+    mariam::cout<< "---------------------------------------------"<<mariam::endl;
     do
     {
-        if(std::cin.eof())
+        if(mariam::cin.eof())
             exit(1);
-        std::cout << "Choisir un index : ";
-        getline(std::cin, input);
+        mariam::cout << "Choisir un index : ";
+        getline(mariam::cin, input);
         if (!isnotdigits(input) && atoi(input.c_str()) >= 0 && atoi(input.c_str()) <= 7 && input.length() == 1 )
         {
             tmpindex = atoi(input.c_str());
@@ -109,36 +109,36 @@ void    PhoneBook::searchfor()
         }
         else
         {
-            std::cout << "Vous devez entrer un index valide." << std::endl;
+            mariam::cout << "Vous devez entrer un index valide." << mariam::endl;
         }
     } while (true);
-    std::cout << "First name: " << contacts[tmpindex].getFirstName() << std::endl;
-    std::cout << "Last name: " << contacts[tmpindex].getLastName() << std::endl;
-    std::cout << "nickename: " << contacts[tmpindex].getNickName() << std::endl;
-    std::cout << "Phone number: " << contacts[tmpindex].getPhoneNumber() << std::endl;
-    std::cout << "Darkest secret: " << contacts[tmpindex].getDarkestSecret() << std::endl;
+    mariam::cout << "First name: " << contacts[tmpindex].getFirstName() << mariam::endl;
+    mariam::cout << "Last name: " << contacts[tmpindex].getLastName() << mariam::endl;
+    mariam::cout << "nickename: " << contacts[tmpindex].getNickName() << mariam::endl;
+    mariam::cout << "Phone number: " << contacts[tmpindex].getPhoneNumber() << mariam::endl;
+    mariam::cout << "Darkest secret: " << contacts[tmpindex].getDarkestSecret() << mariam::endl;
     
 }
 
 void PhoneBook::basefonction()
 {
-    std::string input;
+    mariam::string input;
     index = 0;
-    std::cout << "bienvenue dans votre phonebook" << std::endl;
-    std::cout << "les options dans lesquels vous avez l'accès sont : ADD , SEARCH, et Exit . " << std::endl;
+    mariam::cout << "bienvenue dans votre phonebook" << mariam::endl;
+    mariam::cout << "les options dans lesquels vous avez l'accès sont : ADD , SEARCH, et Exit . " << mariam::endl;
      while(1)
     {
-        std::cout << "Entre an option : ";
-        getline(std::cin , input);
-        if(std::cin.eof())
+        mariam::cout << "Entre an option : ";
+        getline(mariam::cin , input);
+        if(mariam::cin.eof())
             exit(1);
         if(input == "ADD")
-            x->addcontact();
+            this->addcontact();
         else if(input == "SEARCH")
-            x->searchfor();
+            this->searchfor();
         else if (input == "EXIT")
             break;
         else
-             std::cout << "cette option n'EXIST pas  " << std::endl;
+             mariam::cout << "cette option n'EXIST pas  " << mariam::endl;
     }
 }
