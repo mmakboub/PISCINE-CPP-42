@@ -6,7 +6,7 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 23:51:36 by mmakboub          #+#    #+#             */
-/*   Updated: 2023/02/17 00:53:02 by mmakboub         ###   ########.fr       */
+/*   Updated: 2023/02/17 23:09:09 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ class Fixed{
     private:
         int _fixed;
         static const int _fractionalBits = 8;
-
     public:
         Fixed();
         Fixed(const Fixed  & src);
@@ -31,6 +30,6 @@ class Fixed{
         float toFloat( void ) const;
         int toInt( void ) const;
 
-         friend std::ostream& operator<<(std::ostream& out, const Fixed& fp)
 };
+std::ostream& operator<<(std::ostream& out, const Fixed& fp);
 #endif
