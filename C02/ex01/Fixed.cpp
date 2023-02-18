@@ -6,12 +6,12 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 23:51:39 by mmakboub          #+#    #+#             */
-/*   Updated: 2023/02/17 23:07:49 by mmakboub         ###   ########.fr       */
+/*   Updated: 2023/02/18 18:15:43 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"Fixed.hpp"
-#include <iostream>
+
 Fixed::Fixed()
 {
     std::cout << "Default constructor called" << std::endl;
@@ -26,16 +26,16 @@ Fixed::Fixed(const Fixed &src) {
 
 Fixed::Fixed(const int &src) {
     std::cout << "Int constructor called" << std::endl;
-    *this = src;
+    this->_fixed = src << _fractionalBits;
+
 }
 
 Fixed::Fixed(const float &src) {
     std::cout << "Float constructor called" << std::endl;
-    *this = src;
+    this->_fixed = roundf(src * (1 << _fractionalBits));
 }
 
 int Fixed::getRawBits( void ) const{
-    std::cout << "getRawBits member function called" << std::endl;
     return this->_fixed;
 }
 
@@ -44,9 +44,10 @@ void Fixed::setRawBits( int const raw ){
 }
 
 Fixed &Fixed::operator=( const Fixed &rhs ){
-     std::cout << "copy assignment operator called" << std::endl;
+    if(this != &rhs)
         this->_fixed = rhs.getRawBits();
-        return *this;
+     std::cout << "copy assignment operator called" << std::endl;
+    return *this;
 }
 
 float Fixed::toFloat( void )const{

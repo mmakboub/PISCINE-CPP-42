@@ -6,13 +6,14 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 23:51:36 by mmakboub          #+#    #+#             */
-/*   Updated: 2023/02/17 23:09:09 by mmakboub         ###   ########.fr       */
+/*   Updated: 2023/02/18 16:05:55 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FIXED_H
 #define FIXED_H
 #include <iostream>
+#include <cmath>
 class Fixed{
     private:
         int _fixed;
