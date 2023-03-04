@@ -6,7 +6,7 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 17:05:22 by mmakboub          #+#    #+#             */
-/*   Updated: 2023/02/18 23:52:14 by mmakboub         ###   ########.fr       */
+/*   Updated: 2023/03/04 18:13:09 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,16 +113,16 @@ Fixed& Fixed::operator--(void){
     return *this; // return new value by reference
 }
 
-Fixed Fixed::operator--(int){
+Fixed Fixed::operator++(int){
     Fixed old = *this;
-    old.operator--();
-    return(*this);
+    operator++();
+    return old;
 }
 
-Fixed Fixed::operator++(int){
-    Fixed old = *this; // copy old value
-    old.operator++();  // prefix decrement
-    return(*this);    // return old value
+Fixed Fixed::operator--(int){
+    Fixed old = *this;
+    operator--();
+    return old;
 }
 
 Fixed& Fixed::min(Fixed &a, Fixed& b){

@@ -6,7 +6,7 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 23:47:57 by mmakboub          #+#    #+#             */
-/*   Updated: 2023/02/16 23:52:30 by mmakboub         ###   ########.fr       */
+/*   Updated: 2023/03/04 17:31:22 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ std::cout << "c is " << c << std::endl;
 std::cout << "d is " << d << std::endl;
 std::cout << "a is " << a.toInt() << " as integer" << std::endl;
 std::cout << "b is " << b.toInt() << " as integer" << std::endl;
+std::cout << "b is " << b.toFloat() << " as float" << std::endl;
 std::cout << "c is " << c.toInt() << " as integer" << std::endl;
 std::cout << "d is " << d.toInt() << " as integer" << std::endl;
 return 0;
