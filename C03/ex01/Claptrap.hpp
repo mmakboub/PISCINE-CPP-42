@@ -6,7 +6,7 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 20:56:31 by mmakboub          #+#    #+#             */
-/*   Updated: 2023/03/10 23:40:22 by mmakboub         ###   ########.fr       */
+/*   Updated: 2023/03/09 17:56:41 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class ClapTrap{
         int _hitPoints;
         int _energyPoints;
         int _attackDamage;   
-
+    
     public:
         ClapTrap();
         ClapTrap(std::string name);

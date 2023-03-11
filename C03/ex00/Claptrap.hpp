@@ -6,13 +6,14 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 20:56:31 by mmakboub          #+#    #+#             */
-/*   Updated: 2023/03/05 21:58:42 by mmakboub         ###   ########.fr       */
+/*   Updated: 2023/03/09 16:18:23 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CLAPTRAP_H
 #define CLAPTRAP_H
 #include <iostream>
+#include<string.h>
 
 class ClapTrap{
     private:
@@ -31,7 +32,7 @@ class ClapTrap{
         std::string getName(void)const;
         int getHitPoints(void)const;
         int getEnergyPoints(void)const;
-        int getAttachDamage(void)const;
+        int getAttackDamage(void)const;
         ~ClapTrap();
 };
 #endif

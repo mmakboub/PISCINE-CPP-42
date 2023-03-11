@@ -6,14 +6,18 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 20:56:26 by mmakboub          #+#    #+#             */
-/*   Updated: 2023/03/11 20:31:06 by mmakboub         ###   ########.fr       */
+/*   Updated: 2023/03/11 20:31:00 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"ClapTrap.hpp"
 
-ClapTrap::ClapTrap(std::string name):_name(name) , _hitPoints(10) , _energyPoints(10), _attackDamage(0){
-    std::cout << "Default constructor called" << std::endl;
+ClapTrap::ClapTrap():_name("none") , _hitPoints(10) , _energyPoints(10), _attackDamage(0){
+    std::cout << "Default constructor is called for claptrap" << std::endl;
+}
+
+ClapTrap::ClapTrap(std::string name):_name(name) , _hitPoints(10) , _energyPoints(10), _attackDamage(10){
+    std::cout << "parametric constructor called" << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &src) {
@@ -72,7 +76,7 @@ void ClapTrap::beRepaired(unsigned int amount){
     if(this->_hitPoints > 0 || this->_energyPoints > 0)
     {
         std::cout << "ClapTrap " << this->_name << " is repaired for " <<amount<< " points of damage " << std::endl;
-        this->_hitPoints += amount;
+     this->_hitPoints += amount;
         _energyPoints--;
     }
     else
@@ -82,5 +86,5 @@ void ClapTrap::beRepaired(unsigned int amount){
 
 ClapTrap::~ClapTrap()
 {
-    std::cout << "destracter is called "<< std::endl;
+    std::cout << "destracter is called for claptrap "<< std::endl;
 }

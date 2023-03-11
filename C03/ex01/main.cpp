@@ -1,32 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/09 17:40:01 by mmakboub          #+#    #+#             */
-/*   Updated: 2023/03/11 20:32:23 by mmakboub         ###   ########.fr       */
+/*   Created: 2023/03/09 18:35:54 by mmakboub          #+#    #+#             */
+/*   Updated: 2023/03/11 20:30:00 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAVTRAP_HPP
-#define SCAVTRAP_HPP
- 
-#include <iostream>
-#include <string>
-#include"ClapTrap.hpp"
- 
-class ScavTrap: public ClapTrap
+#include "ScavTrap.hpp"
+
+int main()
 {
-    public:
-        ScavTrap();
-       ScavTrap(std::string name);
-       ScavTrap(const ScavTrap &src);
-        void attack(const std::string& target);
-       ScavTrap &operator=(const ScavTrap &rhs);
-        ~ScavTrap();
-        void guardGate();
-};
- 
-#endif
+    ScavTrap obj1("Scav_1");
+    ScavTrap obj2("Scav_2");
+
+    obj1.attack("Scav_1");
+    obj1.beRepaired(10);
+    obj1.attack("Scav_1");
+    obj1.attack("Scav_1");
+    obj2.takeDamage(1000);
+    obj2.attack("Scav_2");
+    obj2.guardGate();
+
+    return 0;
+}
