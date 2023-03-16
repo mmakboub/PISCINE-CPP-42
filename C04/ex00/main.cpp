@@ -6,12 +6,13 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 20:32:41 by mmakboub          #+#    #+#             */
-/*   Updated: 2023/03/12 21:21:18 by mmakboub         ###   ########.fr       */
+/*   Updated: 2023/03/16 14:13:36 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
 #include "Cat.hpp"
+#include "WrongCat.hpp"
 
 int main()
 {
@@ -20,8 +21,21 @@ const Animal* i = new Cat();
 const Animal* j = new Dog();
 std::cout << j->getType() << " " << std::endl;
 std::cout << i->getType() << " " << std::endl;
-i->makeSound(); //will output the cat sound!
+i->makeSound(); 
 j->makeSound();
 meta->makeSound();
+
+delete meta;
+delete i;
+delete j;
+std::cout << "------------------------" << std::endl;
+const WrongAnimal* Wanimal = new WrongAnimal();
+const WrongAnimal* Wcat = new WrongCat();
+std::cout << Wcat->getType() << " " << std::endl;
+Wcat->makeSound(); 
+Wanimal->makeSound();
+
+delete Wanimal;
+delete Wcat;
 return 0;
 }

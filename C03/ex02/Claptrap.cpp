@@ -6,11 +6,11 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/05 20:56:26 by mmakboub          #+#    #+#             */
-/*   Updated: 2023/03/11 20:32:12 by mmakboub         ###   ########.fr       */
+/*   Updated: 2023/03/11 21:19:04 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include"ClapTrap.hpp"
+#include"Claptrap.hpp"
 
 ClapTrap::ClapTrap():_name("none") , _hitPoints(10) , _energyPoints(10), _attackDamage(10){
     std::cout << "Default constructor is called for claptrap" << std::endl;

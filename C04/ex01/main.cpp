@@ -1,32 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/09 17:40:01 by mmakboub          #+#    #+#             */
-/*   Updated: 2023/03/11 21:18:35 by mmakboub         ###   ########.fr       */
+/*   Created: 2023/03/16 15:32:35 by mmakboub          #+#    #+#             */
+/*   Updated: 2023/03/16 15:33:27 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAVTRAP_HPP
-#define SCAVTRAP_HPP
- 
-#include <iostream>
-#include <string>
-#include"Claptrap.hpp"
- 
-class ScavTrap: public ClapTrap
-{
-    public:
-        ScavTrap();
-       ScavTrap(std::string name);
-       ScavTrap(const ScavTrap &src);
-        void attack(const std::string& target);
-       ScavTrap &operator=(const ScavTrap &rhs);
-        ~ScavTrap();
-        void guardGate();
-};
- 
-#endif
+#include "Cat.hpp"
+#include "Dog.hpp"
+#include "Brain.hpp"
+
+int main() {
+    const int NumAnimals = 6;
+    Animal* animals[NumAnimals];
+    for (int i = 0; i < NumAnimals; ++i) {
+        if (i % 2 == 0) {
+            animals[i] = new Dog();
+        } else {
+            animals[i] = new Cat();
+        }
+    }
+
+    for (int i = 0; i < NumAnimals; ++i) {
+        delete animals[i];
+    }
+
+    return 0;
+}

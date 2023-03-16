@@ -6,7 +6,7 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 17:40:01 by mmakboub          #+#    #+#             */
-/*   Updated: 2023/03/11 20:30:22 by mmakboub         ###   ########.fr       */
+/*   Updated: 2023/03/11 21:20:00 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
  
 #include <iostream>
 #include <string>
-#include"ClapTrap.hpp"
+#include"Claptrap.hpp"
  
 class ScavTrap: public ClapTrap
 {

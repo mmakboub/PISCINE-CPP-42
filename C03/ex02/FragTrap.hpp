@@ -6,14 +6,14 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 19:05:21 by mmakboub          #+#    #+#             */
-/*   Updated: 2023/03/11 20:31:51 by mmakboub         ###   ########.fr       */
+/*   Updated: 2023/03/11 21:18:46 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRAGTRAP_H
 #define FRAGTRAP_H
 
-#include "ClapTrap.hpp"
+#include "Claptrap.hpp"
 
 class FragTrap : public ClapTrap
 {
