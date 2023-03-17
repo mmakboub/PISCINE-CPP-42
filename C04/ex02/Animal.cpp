@@ -6,7 +6,7 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 20:16:19 by mmakboub          #+#    #+#             */
-/*   Updated: 2023/03/16 14:14:26 by mmakboub         ###   ########.fr       */
+/*   Updated: 2023/03/17 19:51:24 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,4 @@ Animal &Animal::operator=( const Animal &rhs ){
 Animal::~Animal()
 {
     std::cout << "destracter is called for animal"<< std::endl;
-}
-void Animal::makeSound() const
-{
 }

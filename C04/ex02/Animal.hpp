@@ -6,7 +6,7 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 20:06:39 by mmakboub          #+#    #+#             */
-/*   Updated: 2023/03/12 21:21:04 by mmakboub         ###   ########.fr       */
+/*   Updated: 2023/03/17 19:25:17 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class Animal{
         Animal(const Animal &src);
         Animal &operator=(const Animal &rhs);
         std::string getType(void)const;
-        virtual void makeSound() const;
-        ~Animal();
+        virtual void makeSound() const = 0;
+        virtual ~Animal();
 };
 #endif
