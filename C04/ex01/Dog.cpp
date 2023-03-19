@@ -6,7 +6,7 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 20:31:22 by mmakboub          #+#    #+#             */
-/*   Updated: 2023/03/16 16:53:48 by mmakboub         ###   ########.fr       */
+/*   Updated: 2023/03/17 19:29:25 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ Dog &Dog::operator=( const Dog &rhs ){
     return *this;
 }
 void Dog::makeSound() const {
-    std::cout << "Miaoooooooow" << std::endl;
+    std::cout << "boooo" << std::endl;
 }
 Dog::~Dog()
 {

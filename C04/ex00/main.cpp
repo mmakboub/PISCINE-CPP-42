@@ -6,7 +6,7 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/12 20:32:41 by mmakboub          #+#    #+#             */
-/*   Updated: 2023/03/16 14:13:36 by mmakboub         ###   ########.fr       */
+/*   Updated: 2023/03/17 20:24:42 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ int main()
 const Animal* meta = new Animal();
 const Animal* i = new Cat();
 const Animal* j = new Dog();
-std::cout << j->getType() << " " << std::endl;
-std::cout << i->getType() << " " << std::endl;
-i->makeSound(); 
-j->makeSound();
+std::cout << j->getType() << " : ";
+j->makeSound() ; 
+std::cout << i->getType() << " : ";
+i->makeSound();
 meta->makeSound();
 
 delete meta;
@@ -31,7 +31,7 @@ delete j;
 std::cout << "------------------------" << std::endl;
 const WrongAnimal* Wanimal = new WrongAnimal();
 const WrongAnimal* Wcat = new WrongCat();
-std::cout << Wcat->getType() << " " << std::endl;
+std::cout << Wcat->getType() << ": ";
 Wcat->makeSound(); 
 Wanimal->makeSound();
 

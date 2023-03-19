@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Cure.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/16 15:32:35 by mmakboub          #+#    #+#             */
-/*   Updated: 2023/03/17 20:28:54 by mmakboub         ###   ########.fr       */
+/*   Created: 2023/03/19 16:28:05 by mmakboub          #+#    #+#             */
+/*   Updated: 2023/03/19 18:06:43 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
-#include "Dog.hpp"
-#include "Brain.hpp"
+#ifndef CURE_HPP
+#define CURE_HPP
+#include "AMateria.hpp"
 
-int main() {
-    const int NumAnimals = 6;
-    Animal* animals[NumAnimals];
-    for (int i = 0; i < NumAnimals; ++i) {
-        if (i % 2 == 0) {
-            animals[i] = new Dog();
-        } else {
-            animals[i] = new Cat();
-        }
-    }
+class Cure : public AMateria
+{
+    public:
+        Cure();
+        Cure( Cure const &src);
+        Cure& operator=( Cure const & rhs);
+        AMateria *clone() const;
+        void use(ICharacter &target);
+        ~Cure();
+};
 
-    for (int i = 0; i < NumAnimals; ++i) {
-        delete animals[i];
-    }
-
-    return 0;
-}
+#endif

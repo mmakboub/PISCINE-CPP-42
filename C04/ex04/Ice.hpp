@@ -1,19 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   Ice.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/04 17:19:33 by mmakboub          #+#    #+#             */
-/*   Updated: 2023/03/04 17:35:49 by mmakboub         ###   ########.fr       */
+/*   Created: 2023/03/19 16:52:45 by mmakboub          #+#    #+#             */
+/*   Updated: 2023/03/19 18:06:36 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <math.h>
-#include <stdio.h>
+#ifndef ICE_HPP
+#define ICE_HPP
+#include "AMateria.hpp"
 
-int main()
+class Ice : public AMateria
 {
-    printf("%f\n", roundf(10860.0064)) ;
-}
+    public:
+        Ice();
+        Ice( Ice const &src);
+        Ice& operator=( Ice const & rhs);
+        AMateria *clone() const;
+        void use(ICharacter &target);
+        ~Ice();
+};
+
+#endif

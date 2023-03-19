@@ -63,6 +63,9 @@
         "deque": "cpp",
         "fstream": "cpp",
         "iomanip": "cpp",
-        "stack": "cpp"
+        "stack": "cpp",
+        "__functional_base_03": "c",
+        "filesystem": "c",
+        "amateria.hpp": "c"
     }
 }
