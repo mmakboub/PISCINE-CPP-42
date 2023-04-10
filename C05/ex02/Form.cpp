@@ -6,12 +6,18 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 01:32:11 by mmakboub          #+#    #+#             */
-/*   Updated: 2023/04/10 01:57:57 by mmakboub         ###   ########.fr       */
+/*   Updated: 2023/04/10 02:12:35 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"Form.hpp"
 
+const char * Form::GradeTooHighException:: what() const throw(){
+     return("Grade Is Too High");
+}
+const char * Form::GradeTooLowException:: what() const throw(){
+    return("Grade Is Too Low");
+}
 
 Form::Form() : name("default"), sgrade(0), egrade(0){
     this->issigned = false;
@@ -31,12 +37,6 @@ Form & Form::operator=( Form const & other )
 Form::Form( Form const & src ):name(src.name),sgrade(src.sgrade), egrade(src.egrade)
 {
     this->issigned = src.issigned;
-}
-const char * Form::GradeTooHighException:: what() const throw(){
-     return("Grade Is Too High");
-}
-const char * Form::GradeTooLowException:: what() const throw(){
-    return("Grade Is Too Low");
 }
 Form::Form(const std::string name, int sgrade, int egrade): name(name), sgrade(sgrade), egrade(egrade){
 
@@ -70,6 +70,9 @@ void Form::beSigned(const Bureaucrat& bureaucrat)
         this->issigned = true;
     else
         throw GradeTooLowException();
+}
+const char * Form::ExecFormExcep:: what() const throw(){
+    return(" Doesn't execute ");
 }
 std::ostream& operator<<(std::ostream& out, const Form& rhs)
 {

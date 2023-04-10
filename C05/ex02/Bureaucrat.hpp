@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*    Bureaucrat.hpp                                    :+:      :+:    :+:   */
+/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 20:33:03 by mmakboub          #+#    #+#             */
-/*   Updated: 2023/04/09 01:53:58 by mmakboub         ###   ########.fr       */
+/*   Updated: 2023/04/10 02:17:07 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUREAUCRAT_H
-#define BUREAUCRAT_H
+#ifndef BUREAUCRAT_HPP
+#define BUREAUCRAT_HPP
 #include <iostream>
 #include<string.h>
 #include <exception>
@@ -26,7 +26,8 @@ class Bureaucrat{
         Bureaucrat();
         Bureaucrat(const std::string name ,int garde);
         const std::string getName(void)const;
-        int getGrade(void)const;        
+        int getGrade(void)const;
+        void executeForm(Form const & form)const;
         ~Bureaucrat();
         
         void IncrementGrade();

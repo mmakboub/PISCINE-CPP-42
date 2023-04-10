@@ -6,7 +6,7 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 20:32:53 by mmakboub          #+#    #+#             */
-/*   Updated: 2023/04/10 01:21:53 by mmakboub         ###   ########.fr       */
+/*   Updated: 2023/04/10 02:16:48 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,16 @@ void Bureaucrat::DecrementGrade(){
         throw GradeTooHighException();
     this->grade++;
 }
+
+void Bureaucrat::executeForm(Form const & form)const{
+    try {
+    form.execute(*this);
+    std::cout << *this << " executed" << form << std::endl;
+} catch (const std::exception& e) {
+    std::cerr << *this << " couldn’t executed " << form << " because " << e.what() << std::endl;
+}
+}
+
 void Bureaucrat::signForm(Form& form) const {
 try {
     form.beSigned(*this);
@@ -63,6 +73,7 @@ const char * Bureaucrat::GradeTooHighException:: what() const throw(){
 const char * Bureaucrat::GradeTooLowException:: what() const throw(){
     return("Grade Is Too Low");
 }
+
 std::ostream& operator<<(std::ostream& out, const Bureaucrat& rhs)
 {
     out << rhs.getName() << " bureaucrat grade is " << rhs.getGrade() << std::endl;
