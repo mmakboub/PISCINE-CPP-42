@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
+/*   Intern.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/10 17:00:54 by mmakboub          #+#    #+#             */
-/*   Updated: 2023/04/10 17:25:19 by mmakboub         ###   ########.fr       */
+/*   Created: 2023/04/10 20:33:12 by mmakboub          #+#    #+#             */
+/*   Updated: 2023/04/10 21:39:20 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ROBOTOMYREQUESTFORM_HPP
-#define ROBOTOMYREQUESTFORM_HPP
-
+#ifndef INTERN_HPP
+#define INTERN_HPP
+#include <iostream>
 #include"Form.hpp"
+#include"PresidentialPardonForm.hpp"
+#include"ShrubberyCreationForm.hpp"
+#include"RobotomyRequestForm.hpp"
 
-class RobotomyRequestForm: public Form{
-    private:
-    std::string target;
+class Intern{
     public:
-	RobotomyRequestForm(const std::string& target);
-	RobotomyRequestForm();
-	std::string getTarget() const;
-	void execute(const Bureaucrat& executor) const;
-	RobotomyRequestForm(const RobotomyRequestForm& rhs);
-	RobotomyRequestForm& operator=(const RobotomyRequestForm& rhs);
-	~RobotomyRequestForm();
-    
+        Intern();
+        Intern(const Intern  & src);
+        ~Intern();
+        Intern &operator=(const Intern &rhs);
+        Form *makeForm(const std::string nameForm, const std::string targetForme);
 };
 #endif

@@ -6,7 +6,7 @@
 #    By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/08 20:33:41 by mmakboub          #+#    #+#              #
-#    Updated: 2023/04/10 17:43:47 by mmakboub         ###   ########.fr        #
+#    Updated: 2023/04/10 21:30:29 by mmakboub         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ FONCTIONS = Bureaucrat.cpp\
 		Form.cpp\
 		PresidentialPardonForm.cpp\
 		RobotomyRequestForm.cpp\
-		ShrubberyCreationForm.cpp
+		ShrubberyCreationForm.cpp\
+		Intern.cpp
 		
 CC = c++
 CFLAGS = -Wall -Werror -Wextra  -std=c++98

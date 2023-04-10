@@ -6,7 +6,7 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 01:51:13 by mmakboub          #+#    #+#             */
-/*   Updated: 2023/04/10 20:42:12 by mmakboub         ###   ########.fr       */
+/*   Updated: 2023/04/10 20:43:37 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ std::string PresidentialPardonForm::getTarget( void ) const{
 }
 
 PresidentialPardonForm &PresidentialPardonForm::operator=( const PresidentialPardonForm &rhs ){
-     if(this != &rhs)
+    if(this != &rhs)
         this->target = rhs.getTarget();
     return *this;
 }

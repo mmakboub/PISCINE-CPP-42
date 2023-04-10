@@ -6,7 +6,7 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/09 01:32:11 by mmakboub          #+#    #+#             */
-/*   Updated: 2023/04/10 02:12:35 by mmakboub         ###   ########.fr       */
+/*   Updated: 2023/04/10 20:40:15 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,10 @@ Form::Form() : name("default"), sgrade(0), egrade(0){
     if (this->sgrade > 150 || this->egrade > 150)
         throw GradeTooHighException();
 }
-Form & Form::operator=( Form const & other )
+Form & Form::operator=( Form const & rhs )
 {
-	if (this != &other)
-	{
-		issigned = other.issigned;
-	}
+	if (this != &rhs)
+		issigned = rhs.issigned;
 	return (*this);
 }
 Form::Form( Form const & src ):name(src.name),sgrade(src.sgrade), egrade(src.egrade)
@@ -72,10 +70,10 @@ void Form::beSigned(const Bureaucrat& bureaucrat)
         throw GradeTooLowException();
 }
 const char * Form::ExecFormExcep:: what() const throw(){
-    return(" Doesn't execute ");
+    return(" it Doesn't execute ");
 }
 std::ostream& operator<<(std::ostream& out, const Form& rhs)
 {
-    out <<rhs.getName() << ( rhs.isSigned() ? " Is Signed " : " Is Not Signed " ) <<"his Form Sgrade is " << rhs.getSgrade() << " and Egrade is " << rhs.getEgrade() << std::endl;
+    out <<rhs.getName() << ( rhs.isSigned() ? " Is Signed " : " Is Not Signed " ) <<"his Form Sgrade is " << rhs.getSgrade() << " and Egrade is " << rhs.getEgrade();
     return (out);
 }

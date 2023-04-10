@@ -6,7 +6,7 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/08 20:55:52 by mmakboub          #+#    #+#             */
-/*   Updated: 2023/04/10 01:21:24 by mmakboub         ###   ########.fr       */
+/*   Updated: 2023/04/10 17:46:58 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int main( void )
 
     try {
         Bureaucrat bureaucrat("mariam",11);
-        Form form("mak", 10,9);
+        Form form("mak", 10,12);
         form.beSigned(bureaucrat);
         std::cout<< bureaucrat;
         std::cout<< form;
