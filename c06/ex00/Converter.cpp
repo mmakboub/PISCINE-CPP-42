@@ -6,7 +6,7 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/14 00:51:18 by mmakboub          #+#    #+#             */
-/*   Updated: 2023/04/19 02:24:59 by mmakboub         ###   ########.fr       */
+/*   Updated: 2023/04/20 02:58:07 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,15 @@
 #include <cmath>
 #include <cstdlib>
 #include <limits.h> 
+
+int ft_strlen(char *str)
+{
+    int i =0;
+    while(str[i])
+        i++;
+    return i;
+}
+
 int	ft_is_ascii(int c)
 {
 	return (c >= 0 && c <= 127);
@@ -29,7 +38,9 @@ int	ft_is_digit(int c)
 int	is_char(char *c)
 {
     char a = c[0];
-	return (ft_is_ascii(a) && !ft_is_digit(a));
+    if(ft_strlen(c) == 1 && ft_is_ascii(a) && !ft_is_digit(a))
+	    return (0);
+    return 1;
 }
 
 int is_int(char *str)
@@ -37,9 +48,7 @@ int is_int(char *str)
     int			i;
 
 	i = 0;
-	if (str[0] != '-' && str[0] != '+' && !ft_is_digit(str[0]))
-		return(0);
-    if(str[i] == '-' || str[i] == '+')
+	if (str[i] == '-' || str[i] == '+')
         i++;
 	while (str[i])
 	{
@@ -51,157 +60,149 @@ int is_int(char *str)
 }
 int fpseudotype(char *type)
 {
-    if(!strcmp(type, "-inff") || !strcmp(type, "+inff") || !strcmp(type, "nanf"))
+    if(!strcmp(type, "-inff") || !strcmp(type, "+inff") || !strcmp(type, "nanf")  || !strcmp(type, "inff"))
         return(0);
     return(1);
 }
 int dpseudotype(char *type)
 {
-    if(!strcmp(type, "-inf") || !strcmp(type, "+inf") || !strcmp(type, "nan"))
+    if(!strcmp(type, "-inf") || !strcmp(type, "+inf") || !strcmp(type, "nan") || !strcmp(type, "inf"))
         return(0);
     return(1);
 }
 int is_float(char *type)
 {
-    if(fpseudotype(type))
-        return(0);
-    if(type[strlen(type) -1] != 'f' && type[strlen(type) -1] != 'F')
-        return 0;
-    int i = 0;
-    while (type[i] == '+' || type[i] == '-')
-	{
-		i++;
-		if (type[i] == '+' || type[i] == '-')
-			return (0);
-	}
-    int j = 0;
-    int flag = 0;
-    while(type[j])
+    int i =0;
+    int pointCount=0;
+    if(!fpseudotype(type))
+        return(1);
+    if (type[i] == '-' || type[i] == '+')
+        i++;
+    while (i < ft_strlen(type) - 1)
     {
-        if( type[j] != 'f' && type[j] != 'F' && type[j] != '.' && type[i] == '+' && type[i] == '-' && !ft_is_digit(type[j]) )
-            return(0);
-        if(type[j] == '.')
-            flag++;
-        j++;   
+        if (type[i] == '.')
+            pointCount++;
+        if (!ft_is_digit(type[i]) && type[i] != '.')
+            return 0;
+        i++;
     }
-    if(flag != 1)
-        return(0);
-    return(1);
+    if (pointCount != 1)
+        return 0;
+    if(type[ft_strlen(type) -1] == 'f' || type[ft_strlen(type) -1] == 'F')
+        return 1;
+    return 0; 
 }
 //str.find('.') != std::string::npos
 
 int is_double(char *type)
 {
-    int flag = 0;
-    if(dpseudotype(type))
-        return(0);
+    if(!dpseudotype(type))
+        return(1);
     int i = 0;
-    if(type[0] == '+' || type[i] == '-')
-	{
-		i++;
-		if (type[i] == '+' || type[i] == '-')
-			return (0);
-	}
-    int j = 0;
-    while(type[j])
+    int pointCount=0;
+    if (type[i] == '-' || type[i] == '+')
+        i++;
+    while (i < ft_strlen(type))
     {
-        if(!ft_is_digit(type[j]) && type[j] != '.' && type[i] == '+' && type[i] == '-')
-            return(0);
-        if(type[j] == '.')
-            flag++;
-        j++;   
+        if (type[i] == '.')
+            pointCount++;
+        if (!ft_is_digit(type[i]) && type[i] != '.')
+            return 0;
+        i++;
     }
-    if(flag != 1)
-        return(0);
-    return(1);
+    if (pointCount != 1)
+        return 0;
+    return 1; 
 }
 
 int receivetype(char *type)
 {
     if(is_float(type))
         return(1);
-    else if(is_char(type))
+    else if(!is_char(type))
         return(2);
     else if(is_int(type))
         return(3);
-    else if(!is_double(type))
+    else if(is_double(type))
         return (4);
     else 
         return(0);
     
 }
-
-void cast_to_int(std::string arg)
+int specialpseudo(char *type)
+{
+     if(!strcmp(type, "-inff") || !strcmp(type, "+inff")  || !strcmp(type, "inff") || !strcmp(type, "-inf") || !strcmp(type, "+inf") || !strcmp(type, "inf"))
+        return(0);
+    return(1);
+}
+void cast_to_int(std::string arg, int ret)
 {  
-    double d = std::atof(arg.c_str());
-    int ivalue = (int)d;
-    if(ivalue >= INT_MAX || ivalue <= INT_MIN)
+    double x;
+    if (ret == 2)
+        x = (int)arg[0];
+    else
+        x = std::atof(arg.c_str());
+    if ( specialpseudo((char *)arg.c_str()))
     {
-        std::cout << "int : impossible" << '\n';
-        return ;
+        if((long)x > INT_MAX || (long)x < INT_MIN)
+        {
+            std::cout << "int : impossible" << '\n';
+            return ;
+        }
     }
-    
-    if (arg.size() == 1 && std::isalpha(arg[0]))
-    {
-        std::cout << "int: "  <<  (int)arg[0] << std::endl;
-        return ;
-    }
-    
-    
-    std::cout << "int: "  <<  std::to_string(ivalue) << std::endl;
-        
-    // return(ivalue);
+    std::cout << "int: "  <<  (int)x << std::endl;
 }
 
-void cast_to_char(std::string arg)
+void cast_to_char(std::string arg, int ret)
 {
-    
-    if (arg.size() != 1)
+    int x;
+    if (ret == 2)
+        x = (int)arg[0];
+    else
+        x = std::atoi(arg.c_str());
+    if ((x < 0 || x > 127) || !dpseudotype((char *)arg.c_str()) || !fpseudotype((char *)arg.c_str()))
     {
         std::cout << "char: impossible" << '\n';
         return ;
     }
-   
-    if((int)arg[0] < 32 || (int)arg[0] > 126)
+    if(x < 32 || x > 126)
          std::cout <<  "char: Non displayeble" << std::endl;
     else
-         std::cout <<  "char: " << arg << std::endl;
-    
+         std::cout <<  "char: '" << (char)x << "'"<< std::endl;
 }
 
-void cast_to_float(std::string arg)
+void cast_to_float(std::string arg, int ret)
 {
-    if(arg.back() != 'f' && arg.back() != 'F')
-     {
-        float fvalue = std::strtof(arg.c_str(), nullptr);
-        if (arg.size() == 1)
-            std::cout << "float: " << fvalue << ".0f"<< std::endl;
-        else
+    float fvalue;
+    if (ret == 2)
+        fvalue = (int)arg[0];
+    else
+        fvalue = (float)std::atof(arg.c_str());
+    if ((int)fvalue == fvalue)
+        std::cout << "float: " << fvalue << ".0f"<< std::endl;
+    else
         std::cout << "float: " << fvalue <<"f"<< std::endl;
-     }
-    else 
-    std::cout << "float: " << arg <<std::endl;
-
-   
     }
 
-void cast_to_double(std::string arg)
+void cast_to_double(std::string arg, int ret)
 {
-
-    double dvalue = std::strtod(arg.c_str(), nullptr);
-    if (arg.size() == 1)
+    double dvalue;
+    if (ret == 2)
+        dvalue = (int)arg[0];
+    else
+        dvalue = std::atof(arg.c_str());
+    if ((int)dvalue == dvalue)
             std::cout << "double: " << dvalue << ".0"<< std::endl;
     else
         std::cout << "double: "<< dvalue << std::endl;
 }
 
-
-void trait_case(char *arg)
+void trait_case(char *arg,int ret)
 {
-    cast_to_char(arg);
-    cast_to_int(arg);
-    cast_to_float(arg);
-    cast_to_double(arg);
+    cast_to_char(arg,ret);
+    cast_to_int(arg,ret);
+    cast_to_float(arg,ret);
+    cast_to_double(arg,ret);
 }
 
 
@@ -211,23 +212,10 @@ int main(int ac , char **av)
     if(ac == 2)
     {
         int ret = receivetype(av[1]);
-        // std::cout << ret << std::endl;
-        switch(ret){
-        case 0:
+        if(ret == 0)
             std::cout << "invalide type" << std::endl;
-        case 1:
-            trait_case(av[1]);
-            break;
-        case 2:
-            trait_case(av[1]);
-            break;
-        case 3:
-            trait_case(av[1]);
-            break;
-        case 4:
-            trait_case(av[1]);
-        }
-        
+        else
+            trait_case(av[1],ret);
     }
     else
         std::cout << "number of argments is invalide" << std::endl;
