@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Iter.hpp                                           :+:      :+:    :+:   */
+/*   mutanStack.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/06 15:28:31 by mmakboub          #+#    #+#             */
-/*   Updated: 2023/05/09 17:27:09 by mmakboub         ###   ########.fr       */
+/*   Created: 2023/05/13 00:36:46 by mmakboub          #+#    #+#             */
+/*   Updated: 2023/05/13 00:45:40 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ITER_HPP
-#define ITER_HPP
+#ifndef MUTANSTACK_HPP
+#define MUTANSTACK_HPP
 #include<iostream>
 #include<string.h>
-template<typename T>
-void iter(T *tab, int len, void fonc(T const &var)) 
+#include<vector>
+#include<stack>
+class Mutanstack : public std::stack
 {
-    for(int i(0); i < len; i++)
-        fonc(tab[i]);
-};
+    
+}
+
 #endif

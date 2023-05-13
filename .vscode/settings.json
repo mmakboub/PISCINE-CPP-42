@@ -66,6 +66,8 @@
         "stack": "cpp",
         "__functional_base_03": "c",
         "filesystem": "c",
-        "amateria.hpp": "c"
+        "amateria.hpp": "c",
+        "__functional_03": "cpp",
+        "memory_resource": "cpp"
     }
 }
