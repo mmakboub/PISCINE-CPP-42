@@ -6,10 +6,11 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/13 00:24:17 by mmakboub          #+#    #+#             */
-/*   Updated: 2023/05/13 00:24:20 by mmakboub         ###   ########.fr       */
+/*   Updated: 2023/05/13 22:11:57 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "MutanStack.hpp"
 int main()
 {
 MutantStack<int> mstack;

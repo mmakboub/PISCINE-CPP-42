@@ -6,7 +6,7 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/12 00:39:54 by mmakboub          #+#    #+#             */
-/*   Updated: 2023/05/12 23:53:22 by mmakboub         ###   ########.fr       */
+/*   Updated: 2023/05/13 21:57:20 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ void Span::addNumber(int num)
     else
         throw std::runtime_error("EXCEPTION : CAN'T ADD NUM");      
 }
+int Span::getN(void)const{
+    return this->N;
+}
 Span::Span(const Span &src) {
     std::cout << "Copy constructor called for Span" << std::endl;
     *this = src;
-}
-int Span::getN(void)const{
-    return this->N;
 }
 std::vector<int> Span::getV(void)const{
     return this->v;
