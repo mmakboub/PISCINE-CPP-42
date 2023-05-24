@@ -5,14 +5,13 @@
 #                                                     +:+ +:+         +:+      #
 #    By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/05/12 00:01:11 by mmakboub          #+#    #+#              #
-#    Updated: 2023/05/19 19:54:52 by mmakboub         ###   ########.fr        #
+#    Created: 2023/05/17 20:22:18 by mmakboub          #+#    #+#              #
+#    Updated: 2023/05/24 13:48:36 by mmakboub         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = main
-FONCTIONS = main.cpp\
-			span.cpp
+NAME = btc
+FONCTIONS = Main.cpp\
 	
 CC = c++
 CFLAGS = -Wall -Werror -Wextra  -std=c++98

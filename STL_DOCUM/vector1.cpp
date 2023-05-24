@@ -6,7 +6,7 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/14 16:46:24 by mmakboub          #+#    #+#             */
-/*   Updated: 2023/05/14 18:32:50 by mmakboub         ###   ########.fr       */
+/*   Updated: 2023/05/19 18:14:30 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
  // sequence container : vector, list, forward_list, deque, arrays ont les appeles comme ca car les element dans ces conteneurs sont linearesl un  acote de l autre mais chaque conteneurs a ces proprietes
  //l array : si on a par exemple un array qui contient une taille exacte et on veut ajouter un element on ne peut pas et si on apar exemple un int array[100] et on a travailler seulement avec la premiere case array[0] et on a aura pas besoin des autres l a c est un probleeme car y a un gaspillage de memoire et je ne peux pas supprimer les case supplemenentaire donc on est besoin de travailler avec un array dynamique (parmi les arrays dynamique on trouve le vector : vector<type> v)
 //pour les dynamique array je peux modifier la taille commen je veux je peux inserer comme je peux supprimer et comme ca je peux garder de l espace coorrecte 
-//DANS LE CAS D UN VECTOR SI J AI int vector<int> v ={0, 1, 2 ,3} et j eveux ajouter un nouvelle element 5 comment ca se passe la procedure : alors je rajoute l element avec v.push_back(5) et tant que vector est un array dynamique donc il va faire un receive pour cette dyamique array en creeant un nouveau array qui contient les anciens element avec le nouveau et on supprimant l ancienne array
+//DANS LE CAS D UN VECTOR SI J AI int vector<int> v ={0, 1, 2 ,3} et j eveux ajouter un nouvelle element 5 comment ca se passe la procedure : alors je rajoute l element avec v.push_back(5) et tant que vector est un array dynamique donc il va faire un receiSe pour cette dyamique array en creeant un nouveau array qui contient les anciens element avec le nouveau et on supprimant l ancienne array
 
 int main()
 {

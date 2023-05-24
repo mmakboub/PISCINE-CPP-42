@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   whatever.hpp                                       :+:      :+:    :+:   */
+/*   Whatever.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/06 15:20:07 by mmakboub          #+#    #+#             */
-/*   Updated: 2023/05/06 15:26:19 by mmakboub         ###   ########.fr       */
+/*   Updated: 2023/05/19 18:46:05 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #define WHATERVER_HPP
 #include<iostream>
 #include<string.h>
-template<typename whatever>
+template<typename int>
 whatever max(whatever a, whatever b) {
     return (a > b) ? a : b;
 }
