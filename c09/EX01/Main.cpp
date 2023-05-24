@@ -6,7 +6,7 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 20:57:55 by mmakboub          #+#    #+#             */
-/*   Updated: 2023/05/24 15:24:27 by mmakboub         ###   ########.fr       */
+/*   Updated: 2023/05/24 17:05:42 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ std::string RemoveSpaces(const std::string& input)
     }
     else
     {
-        line.clear();  // La chaîne entière est constituée d'espaces, donc on la vide
+        line.clear();
     }
 
     return line;
@@ -103,16 +103,13 @@ int  DateChecker(std::string input)
             return 0;
     }
     if(CountTire(line) != 2 || line.substr(4,1) != "-" || line.substr(7,1) != "-")
-        return 0;
+        return -1;
     return 1;
 }
 int is_int(const char *str)
 {
     int			i;
-
-	i = 13;
-	if (str[i] == '-' || str[i] == '+')
-        return 0;
+	i = 0;
 	while (str[i])
 	{
 		if (str[i] < '0' || str[i] > '9')
@@ -121,12 +118,12 @@ int is_int(const char *str)
 	}
     return 1;
 }
+
+
 int is_double(const char *type)
 {
-    int i = 13;
+    int i = 0;
     int pointCount=0;
-    if (type[i] == '-' || type[i] == '+')
-        return 0;
     while (i < (int)strlen(type))
     {
         if (type[i] == '.')
@@ -145,7 +142,11 @@ int ValueChecker(std::string line)
         return 0;
     if(line[11] == '|' && line[12] == ' ')
     {
-        if(!is_double(line.c_str()) && !is_int(line.c_str()))
+        std::string num = line.substr(13);
+        if(!is_double(num.c_str()) && !is_int(num.c_str()))
+            return 0;
+        double dvalue = std::atof(num.c_str());
+        if((int)dvalue > 1000)
             return -1;
     }
     return 1;
@@ -153,82 +154,86 @@ int ValueChecker(std::string line)
 }
 int parser(std::string line)
 {
-    // if(line.length() < 13 || !DateChecker(line) || !ValueChecker(line))
-    // {
-    //     std::cout << "Error: bad input => "<< line.substr(0,4) <<"-"<< line.substr(5,2) <<"-"<<line.substr(8,2)<<std::endl;
-        
-    // }
-    if(line.length() < 13)
+    if(line.length() < 13 || !DateChecker(line))
+    {
+        std::cout << "Error: bad input => "<< line.substr(0,4) <<"-"<< line.substr(5,2) <<"-"<<line.substr(8,2)<<std::endl;
         return 0;
-    else if(!DateChecker(line))
-        return -1;
-    else if(ValueChecker(line) == -1)
-        return 2;
-    else if(!ValueChecker(line))
-        return 3;
-    else 
-        return 1;
-}
-int main() {
-    std::string line;
-    std::cout << "Entrez une ligne : ";
-    std::getline(std::cin, line);
-    int res = parser(line);
-    try{
-        if(res == 0)
-            std::cout << "Error: bad input => 0"<<std::endl;
-        else if(res == -1)
-            std::cout << "Error: bad input => -1"<<std::endl;
-        else if(res == 2)
-            std::cout << "Error: bad input => 2"<<std::endl;
-        else if(res == 3)
-            std::cout << "Error: bad input => 3"<<std::endl;
-        else 
-            std::cout << "correct input => 1"<<std::endl;
-            
-    }catch (const std::exception& e) {
-        std::cout << "Erreur : " << e.what() << std::endl;
     }
-
-    return 0;
+    else if( DateChecker(line) == -1)
+    {
+        std::cout << "Error: not a positive number."<<std::endl;
+        return 0;
+    }
+    else if(ValueChecker(line) == -1)
+    {
+        std::cout << "Error: too large a number."<<std::endl;
+        return 0;
+    }
+    else if(!ValueChecker(line))
+    {
+        std::cout << "Error: bad input => "<< line.substr(0,4) <<"-"<< line.substr(5,2) <<"-"<<line.substr(8,2)<<std::endl;
+        return 0;
+    }
+    return 1;
 }
-// int main(int ac, char **av){
-//     if(ac != 2)
-//         std::cout << "error: incorrect number of arguments" << std::endl;
-//     else
-//     {
-//         std::string inputefile = (av[1]);
-//         std::ifstream ifs(inputefile);
-//         std::string datafile = "data.csv";
-//         std::ifstream dfs(datafile);
-        
-//         ifs.open(av[1]);
-//         if(!ifs.good())
-//         {
-//             std::cout << "Error: Unable to open file " << av[1] << std::endl;
-//             exit(EXIT_FAILURE);
-//         }
-//         dfs.open(av[1]);
-//         {
-//             std::cout << "Error: Unable to open file " << av[1] << std::endl;
-//             exit(EXIT_FAILURE);
-//         }
-//     std::map<std::string, std::string> Bitcoin_map;
-//     std::string input;
-//     while(std::getline(dfs,input))
-//     {
-//         std::string date, value;
-//         date = input.substr(0,10);
-//         value = input.substr(11);
-//         Bitcoin_map[date] = value;
+// int main() {
+//     std::string line;
+//     std::cout << "Entrez une ligne : ";
+//     std::getline(std::cin, line);
+//     int res = parser(line);
+//     try{
+//         if(res == 1)
+//          {
+            
+//          }
+            
+//     }catch (const std::exception& e) {
+//         std::cout << "Erreur : " << e.what() << std::endl;
 //     }
-//     dfs.close();
-//     std::string input2;
-//     while(std::getline(ifs, input2))
-//     {
-//         parser(input2);
-//     }
-    
-// }
-// }
 
+//     return 0;
+// }
+int main(int ac, char **av){
+    if(ac != 2)
+        std::cout << "error: incorrect number of arguments" << std::endl;
+    else
+    {
+        std::string inputefile = (av[1]);
+        std::ifstream ifs(inputefile);
+        std::string datafile = "data.csv";
+        std::ifstream dfs(datafile);
+        
+        ifs.open(av[1]);
+        if(!ifs.good())
+        {
+            std::cout << "Error: Unable to open file " << av[1] << std::endl;
+            exit(EXIT_FAILURE);
+        }
+        dfs.open(av[1]);
+        {
+            std::cout << "Error: Unable to open file " << av[1] << std::endl;
+            exit(EXIT_FAILURE);
+        }
+    std::map<std::string, std::string> Bitcoin_map;
+    std::string input;
+    while(std::getline(dfs,input))
+    {
+        std::string date, value;
+        date = input.substr(0,10);
+        value = input.substr(11);
+        Bitcoin_map[date] = value;
+    }
+    dfs.close();
+    std::string input2;
+    while(std::getline(ifs, input2))
+    {
+        int res = parser(input2);
+        
+    }
+    
+}
+}
+
+
+
+// : elle me reste encore le fait de gerer les espaves dans le parsing
