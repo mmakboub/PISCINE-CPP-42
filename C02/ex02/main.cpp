@@ -6,7 +6,7 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/18 19:30:49 by mmakboub          #+#    #+#             */
-/*   Updated: 2023/03/04 18:16:22 by mmakboub         ###   ########.fr       */
+/*   Updated: 2023/05/25 21:39:21 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 int main( void ) {
 Fixed a;
+Fixed c = 9;
+Fixed &e = c;
+c = e;
 Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
 std::cout << a << std::endl;
 std::cout << ++a << std::endl;

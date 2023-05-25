@@ -6,7 +6,7 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 20:57:55 by mmakboub          #+#    #+#             */
-/*   Updated: 2023/05/25 19:20:38 by mmakboub         ###   ########.fr       */
+/*   Updated: 2023/05/25 20:59:47 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,22 +40,11 @@ int	IsAllDigits(const char *s)
 	}
 	return (1);
 }
-std::string RemoveSpaces(const std::string& input)
-{
-    std::string line = input;
-    std::size_t firstNonSpace = line.find_first_not_of(' ');
-
-    if (firstNonSpace != std::string::npos)
-    {
-        line.erase(0, firstNonSpace);
-    }
-    else
-    {
-        line.clear();
-    }
-
-    return line;
-}
+// std::string RemoveSpaces(const std::string input)
+// {
+// 	input.erase(std::remove(input.begin(), input.end(), ' '), input.end());
+// 	return input;
+// }
 int CountTire(std::string line)
 {
     int counter = 0;
@@ -112,8 +101,8 @@ int is_int(const char *str)
     int			i;
 	i = 0;
     std::istringstream iss(str);
-    long num =0;
-    if(num >= INT_MAX || num <= INT_MIN)
+    long num = 0;
+    if(num == std::numeric_limits<int>::max() || num == std::numeric_limits<int>::min())
         return -1;
 	while (str[i])
 	{
@@ -129,8 +118,9 @@ int is_double(const char *type)
 {
     int i = 0;
     int pointCount=0;
-    long num  =0;
-    if(num >= INT_MAX || num <= INT_MIN)
+    std::istringstream iss(type);
+    long num = 0;
+   if( num == std::numeric_limits<int>::max() || num == std::numeric_limits<int>::min())
         return -1;
     while (i < (int)strlen(type))
     {
@@ -188,7 +178,8 @@ int parser(std::string line)
     }
     return 1;
 }
-int main(int ac, char **av){
+int main(int ac, char **av)
+{
     if(ac != 2)
         std::cout << "error: incorrect number of arguments" << std::endl;
     else

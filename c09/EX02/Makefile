@@ -5,13 +5,13 @@
 #                                                     +:+ +:+         +:+      #
 #    By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/05/17 20:22:18 by mmakboub          #+#    #+#              #
-#    Updated: 2023/05/25 21:34:30 by mmakboub         ###   ########.fr        #
+#    Created: 2023/05/25 21:34:11 by mmakboub          #+#    #+#              #
+#    Updated: 2023/05/25 21:35:07 by mmakboub         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = BTC
-FONCTIONS = Main.cpp\
+NAME = RPN
+FONCTIONS = main.cpp\
 	
 CC = c++
 CFLAGS = -Wall -Werror -Wextra  -std=c++98
