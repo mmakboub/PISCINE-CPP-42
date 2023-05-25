@@ -6,7 +6,7 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 20:57:55 by mmakboub          #+#    #+#             */
-/*   Updated: 2023/05/24 17:05:42 by mmakboub         ###   ########.fr       */
+/*   Updated: 2023/05/25 19:20:38 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <fstream>
 #include <cstdlib>
 #include <map>
+#include <limits.h>
 int	IsDigit(int c)
 {
 	return (c >= '0' && c <= '9');
@@ -110,6 +111,10 @@ int is_int(const char *str)
 {
     int			i;
 	i = 0;
+    std::istringstream iss(str);
+    long num =0;
+    if(num >= INT_MAX || num <= INT_MIN)
+        return -1;
 	while (str[i])
 	{
 		if (str[i] < '0' || str[i] > '9')
@@ -124,6 +129,9 @@ int is_double(const char *type)
 {
     int i = 0;
     int pointCount=0;
+    long num  =0;
+    if(num >= INT_MAX || num <= INT_MIN)
+        return -1;
     while (i < (int)strlen(type))
     {
         if (type[i] == '.')
@@ -145,8 +153,10 @@ int ValueChecker(std::string line)
         std::string num = line.substr(13);
         if(!is_double(num.c_str()) && !is_int(num.c_str()))
             return 0;
+        if(is_int(num.c_str()) == -1 || is_double(num.c_str()) == -1)
+            return -1;
         double dvalue = std::atof(num.c_str());
-        if((int)dvalue > 1000)
+        if((int)dvalue > 1000 )
             return -1;
     }
     return 1;
@@ -154,6 +164,8 @@ int ValueChecker(std::string line)
 }
 int parser(std::string line)
 {
+    if(line == "date | value")
+        return -1;
     if(line.length() < 13 || !DateChecker(line))
     {
         std::cout << "Error: bad input => "<< line.substr(0,4) <<"-"<< line.substr(5,2) <<"-"<<line.substr(8,2)<<std::endl;
@@ -176,23 +188,6 @@ int parser(std::string line)
     }
     return 1;
 }
-// int main() {
-//     std::string line;
-//     std::cout << "Entrez une ligne : ";
-//     std::getline(std::cin, line);
-//     int res = parser(line);
-//     try{
-//         if(res == 1)
-//          {
-            
-//          }
-            
-//     }catch (const std::exception& e) {
-//         std::cout << "Erreur : " << e.what() << std::endl;
-//     }
-
-//     return 0;
-// }
 int main(int ac, char **av){
     if(ac != 2)
         std::cout << "error: incorrect number of arguments" << std::endl;
@@ -203,15 +198,14 @@ int main(int ac, char **av){
         std::string datafile = "data.csv";
         std::ifstream dfs(datafile);
         
-        ifs.open(av[1]);
         if(!ifs.good())
         {
             std::cout << "Error: Unable to open file " << av[1] << std::endl;
             exit(EXIT_FAILURE);
         }
-        dfs.open(av[1]);
+        if(!dfs.good())
         {
-            std::cout << "Error: Unable to open file " << av[1] << std::endl;
+            std::cout << "Error: Unable to open file " << datafile << std::endl;
             exit(EXIT_FAILURE);
         }
     std::map<std::string, std::string> Bitcoin_map;
@@ -228,7 +222,30 @@ int main(int ac, char **av){
     while(std::getline(ifs, input2))
     {
         int res = parser(input2);
-        
+        if(res == -1)
+            continue ;
+        else if(res == 1)
+        {
+            std::string var = input2.substr(0,10);
+            std::string Bitcoin_value;
+            std::map<std::string, std::string>::iterator it = Bitcoin_map.find(var);
+            std::map<std::string, std::string>::iterator it2 = Bitcoin_map.lower_bound(var);
+            if(it != Bitcoin_map.end())
+                Bitcoin_value = it->second;
+            else if(it2 == Bitcoin_map.begin())
+            {
+                std::cout<< "date is out of range" <<std::endl;
+                return 0;
+            }
+            else if(it == Bitcoin_map.end())
+                Bitcoin_value = (--it2)->second;
+            
+            float fbitc_value , fvalue;
+            fbitc_value = atof(Bitcoin_value.c_str());
+            fvalue = atof(input2.substr(13).c_str());
+            std::cout << var << " => " << fvalue << " = " << fvalue * fbitc_value << std::endl;
+            
+        }
     }
     
 }
@@ -236,4 +253,4 @@ int main(int ac, char **av){
 
 
 
-// : elle me reste encore le fait de gerer les espaves dans le parsing
+// : check for a number > than the rang and check for a number that is between to numbers and doesn't exist is .csv file

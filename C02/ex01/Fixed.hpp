@@ -6,7 +6,7 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/16 23:51:36 by mmakboub          #+#    #+#             */
-/*   Updated: 2023/05/24 17:13:04 by mmakboub         ###   ########.fr       */
+/*   Updated: 2023/05/25 16:16:18 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 class Fixed{
     private:
         int _fixed;
-        static const int _fractionalBits = 24;
+        static const int _fractionalBits = 8;
     public:
         Fixed();
         Fixed(const Fixed  & src);
