@@ -6,12 +6,12 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 18:43:05 by mmakboub          #+#    #+#             */
-/*   Updated: 2023/05/29 20:38:13 by mmakboub         ###   ########.fr       */
+/*   Updated: 2023/05/30 21:20:52 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include"PmergeMe.hpp"
-
+#include <iostream>
 PmergeMe::PmergeMe()
 {
 }
@@ -59,7 +59,7 @@ void PmergeMe::mergeQ(std::deque<int>&sub1, std::deque<int>&sub2, std::deque<int
 void PmergeMe::mergsortQ(std::deque<int>&deq, int ac){
     int len = deq.size();
 	if (len <= 1) return;
-    if(len  <= 13)
+    else if(len  <= 13)
     {
         insert_sortQ(ac, deq);
         return ;
@@ -76,7 +76,7 @@ void PmergeMe::mergsortQ(std::deque<int>&deq, int ac){
             sub1[i] = deq[i];
         else
         {
-            sub2[j] = deq[j];
+            sub2[j] = deq[i];
             j++;
         }
         
@@ -120,12 +120,13 @@ void PmergeMe::mergeV(std::vector<int>&sub1, std::vector<int>&sub2, std::vector<
 
 void PmergeMe::mergsortV(std::vector<int>&vect, int ac){
     int len = vect.size();
+    std::cout << len << std::endl;
 	if (len <= 1) return;
-    if(len  <= 13)
-    {
-        insert_sortV(ac, vect);
-        return;
-    }
+    // else if(len  <= 13)
+    // {
+    //     insert_sortV(ac, vect);
+    //     return;
+    // }
     std::vector<int>sub1(len / 2);
     std::vector<int>sub2(len - (len / 2));
 
@@ -167,16 +168,16 @@ void PmergeMe::insert_sortV(int ac, std::vector<int>&vec)
 void PmergeMe::insert_sortQ(int ac, std::deque<int>&deque)
 {
 
-    int i(1), j, k;
+    int i(1), j, tmp;
     for(; i < ac -1; i++)
     {
-        k = deque[i];
+        tmp = deque[i];
         j = i - 1;
-        while(j>=0 && deque[j] > k)
+        while(j>=0 && deque[j] > tmp)
         {
             deque[j + 1] = deque[j];
             j--;
         }
-        deque[j+ 1] = k;
+        deque[j+ 1] = tmp;
     }
 }

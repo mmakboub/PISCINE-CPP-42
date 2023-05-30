@@ -6,7 +6,7 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 20:57:55 by mmakboub          #+#    #+#             */
-/*   Updated: 2023/05/29 16:41:39 by mmakboub         ###   ########.fr       */
+/*   Updated: 2023/05/30 20:37:43 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,15 @@ int	IsAllDigits(const char *s)
 	}
 	return (1);
 }
-// std::string RemoveSpaces(const std::string input)
-// {
-// 	input.erase(std::remove(input.begin(), input.end(), ' '), input.end());
-// 	return input;
-// }
+std::string RemoveSpaces(const std::string& chaine) {
+    std::string resultat = chaine;
+    size_t index = 0;
+    while (index < resultat.length() && resultat[index] == ' ') {
+        index++;
+    }
+    resultat.erase(0, index);
+    return resultat;
+}
 int CountTire(std::string line)
 {
     int counter = 0;
@@ -68,8 +72,6 @@ int CountPipe(std::string line)
 
 int  DateChecker(std::string line)
 {
-    // std::string line;
-    // line = RemoveSpaces(input);
     std::string year, month, day;
     year = line.substr(0,4);
     month = line.substr(5,2);
@@ -199,53 +201,38 @@ int main(int ac, char **av)
         value = input.substr(11);
         Bitcoin_map[date] = value;
     }
-    // std::map<std::string, std::string>::const_iterator it;
-    // for (it = Bitcoin_map.begin(); it != Bitcoin_map.end(); ++it)
-    // {
-    //     std::cout << "Date: " << it->first << ", Value: " << it->second << std::endl;
-    // }
-
     dfs.close();
-    std::string input2;
-    while(std::getline(ifs, input2))
+    std::string line;
+    while(std::getline(ifs, line))
     {
+        std::string input2;
+        input2 = RemoveSpaces(line);
         int res = parser(input2);
         if(res == -1)
             continue ;
         else if(res == 1)
         {
             std::string var = input2.substr(0,10);
-            // std::cout<< "var : " << var <<std::endl;
             std::string Bitcoin_value;
             std::map<std::string, std::string>::iterator it = Bitcoin_map.find(var);
             std::map<std::string, std::string>::iterator it2 = Bitcoin_map.lower_bound(var);
-            std::cout<<it->first<< " and " << it->second << std::endl;
             if(it != Bitcoin_map.end())
-            {
-                // std::cout<<"hi"<<std::endl;
                 Bitcoin_value = it->second;
-            }
             else if(it2 == Bitcoin_map.begin())
             {
                 std::cout<< "date is out of range" <<std::endl;
                 return 0;
             }
-            else if(it == Bitcoin_map.end() && it2 != Bitcoin_map.begin())
+            else if(it == Bitcoin_map.end())
             {
                 Bitcoin_value = (--it2)->second;
             }
-            
             float fbitc_value , fvalue;
             fbitc_value = atof(Bitcoin_value.c_str());
             fvalue = atof(input2.substr(13).c_str());
             std::cout << var << " => " << fvalue << " = " << fvalue * fbitc_value << std::endl;
-            
         }
     }
     ifs.close();
 }
 }
-
-
-
-// : check for a number > than the rang and check for a number that is between to numbers and doesn't exist is .csv file

@@ -6,7 +6,7 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 17:31:48 by mmakboub          #+#    #+#             */
-/*   Updated: 2023/03/11 20:32:18 by mmakboub         ###   ########.fr       */
+/*   Updated: 2023/05/30 17:15:53 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,5 @@ void ScavTrap::guardGate()
 
 ScavTrap::~ScavTrap()
 {
-    std::cout << "destracter is called "<< std::endl;
+    std::cout <<  "destracter is called "<< std::endl;
 }
