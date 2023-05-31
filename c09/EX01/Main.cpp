@@ -6,7 +6,7 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 20:57:55 by mmakboub          #+#    #+#             */
-/*   Updated: 2023/05/30 20:37:43 by mmakboub         ###   ########.fr       */
+/*   Updated: 2023/05/31 16:00:43 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	IsAllDigits(const char *s)
 std::string RemoveSpaces(const std::string& chaine) {
     std::string resultat = chaine;
     size_t index = 0;
-    while (index < resultat.length() && resultat[index] == ' ') {
+    while (index < resultat.length() && (resultat[index] == ' ' || resultat[index] == '\t' ||  resultat[index] == '\n' ||  resultat[index] == '\r') ) {
         index++;
     }
     resultat.erase(0, index);
@@ -207,6 +207,8 @@ int main(int ac, char **av)
     {
         std::string input2;
         input2 = RemoveSpaces(line);
+        if(input2.empty())
+            continue;
         int res = parser(input2);
         if(res == -1)
             continue ;

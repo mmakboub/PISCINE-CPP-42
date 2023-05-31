@@ -6,7 +6,7 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 18:43:05 by mmakboub          #+#    #+#             */
-/*   Updated: 2023/05/30 21:20:52 by mmakboub         ###   ########.fr       */
+/*   Updated: 2023/05/31 15:28:43 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,13 +120,12 @@ void PmergeMe::mergeV(std::vector<int>&sub1, std::vector<int>&sub2, std::vector<
 
 void PmergeMe::mergsortV(std::vector<int>&vect, int ac){
     int len = vect.size();
-    std::cout << len << std::endl;
 	if (len <= 1) return;
-    // else if(len  <= 13)
-    // {
-    //     insert_sortV(ac, vect);
-    //     return;
-    // }
+    else if(len  <= 13)
+    {
+        insert_sortV(ac, vect);
+        return;
+    }
     std::vector<int>sub1(len / 2);
     std::vector<int>sub2(len - (len / 2));
 
@@ -150,9 +149,9 @@ void PmergeMe::mergsortV(std::vector<int>&vect, int ac){
 }
 void PmergeMe::insert_sortV(int ac, std::vector<int>&vec)
 {
- 
+    (void)ac;
     int i(1), j, k;
-    for(; i < ac -1 ; i++)
+    for(; (size_t)i < vec.size() ; i++)
     {
         k = vec[i];
         j = i - 1;
@@ -164,7 +163,6 @@ void PmergeMe::insert_sortV(int ac, std::vector<int>&vec)
         vec[j+ 1] = k;
     }
 }
-
 void PmergeMe::insert_sortQ(int ac, std::deque<int>&deque)
 {
 
