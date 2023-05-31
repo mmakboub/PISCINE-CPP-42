@@ -6,7 +6,7 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/25 20:13:43 by mmakboub          #+#    #+#             */
-/*   Updated: 2023/05/25 21:48:18 by mmakboub         ###   ########.fr       */
+/*   Updated: 2023/05/31 19:36:11 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,11 @@ int main(int ac, char **av)
                 std::cout<< "Error" <<std::endl;
                 exit(0);
             }
+        }
+        if(stack.size()!= 1)
+        {
+            std::cout<< "error" <<std::endl;
+            return 0;
         }
         std::cout <<stack.top()<<std::endl;
     }    

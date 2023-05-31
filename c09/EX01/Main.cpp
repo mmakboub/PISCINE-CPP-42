@@ -6,7 +6,7 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/21 20:57:55 by mmakboub          #+#    #+#             */
-/*   Updated: 2023/05/31 16:00:43 by mmakboub         ###   ########.fr       */
+/*   Updated: 2023/05/31 20:50:02 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -151,7 +151,7 @@ int parser(std::string line)
         return -1;
     if(line.length() < 13 || !DateChecker(line))
     {
-        std::cout << "Error: bad input => "<< line.substr(0,4) <<"-"<< line.substr(5,2) <<"-"<<line.substr(8,2)<<std::endl;
+        std::cout << "Error: bad input => "<< line<<std::endl;
         return 0;
     }
     else if( DateChecker(line) == -1)
@@ -166,7 +166,7 @@ int parser(std::string line)
     }
     else if(!ValueChecker(line))
     {
-        std::cout << "Error: bad input => "<< line.substr(0,4) <<"-"<< line.substr(5,2) <<"-"<<line.substr(8,2)<<std::endl;
+        std::cout << "Error: bad input => "<< line<<std::endl;
         return 0;
     }
     return 1;

@@ -6,7 +6,7 @@
 /*   By: mmakboub <mmakboub@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 18:43:05 by mmakboub          #+#    #+#             */
-/*   Updated: 2023/05/31 15:28:43 by mmakboub         ###   ########.fr       */
+/*   Updated: 2023/05/31 21:01:40 by mmakboub         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,9 +165,9 @@ void PmergeMe::insert_sortV(int ac, std::vector<int>&vec)
 }
 void PmergeMe::insert_sortQ(int ac, std::deque<int>&deque)
 {
-
+    (void)ac;
     int i(1), j, tmp;
-    for(; i < ac -1; i++)
+    for(; (size_t)i < deque.size() ; i++)
     {
         tmp = deque[i];
         j = i - 1;
